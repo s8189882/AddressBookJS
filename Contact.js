@@ -100,8 +100,11 @@ class Contact{
     }
 }
 
+let addressBookArray = new Array();
+
 try{
-    let contact = new Contact("Priya", "Pai", "Porbandar", "Indiana", 63788, 937892178, "priyap@gmail.com");
+    addressBookArray.push(new Contact("Priya", "Pai", "Porbandar", "Indiana", 63788, 937892178, "priyap@gmail.com"));
+    addressBookArray.push(new Contact("Mahi", "walli", "Mecca", "Miriam", 893478, 7782967365, "mm16hmp@gmail.com"));
     console.log(contact.toString());
 }
 catch(e){
