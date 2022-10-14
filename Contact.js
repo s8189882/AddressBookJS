@@ -214,3 +214,15 @@ function viewByState(state){
 }
 console.log("\nDisplaying Contacts By State : Indiana \n" );
 console.log(viewByState('Indiana'));
+
+// get number of entries in a city
+function getCountInCity(city){
+    return addressBookArray.filter((contact) => contact.city == city).reduce(count => getCount(count), 0);
+}
+console.log("\nNumber of contacts residing in city Agra : " + getCountInCity("Agra"));
+
+// get number of entries in a state
+function getCountInState(state){
+    return addressBookArray.filter((contact) => contact.state == state).reduce(count => getCount(count), 0);
+}
+console.log("\nNumber of contacts residing in state Indiana : " + getCountInState("Indiana"));
