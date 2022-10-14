@@ -226,3 +226,12 @@ function getCountInState(state){
     return addressBookArray.filter((contact) => contact.state == state).reduce(count => getCount(count), 0);
 }
 console.log("\nNumber of contacts residing in state Indiana : " + getCountInState("Indiana"));
+
+//sort entries by name
+function sortByName(){
+    addressBookArray.sort((contact1, contact2) => (contact1.firstName).localeCompare(contact2.firstName));
+    console.log(addressBookArray);
+}
+console.log("Displaying Address Book entries in alphabetical Order :");
+sortByName();
+printAddressBook();
