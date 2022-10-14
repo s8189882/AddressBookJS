@@ -235,3 +235,30 @@ function sortByName(){
 console.log("Displaying Address Book entries in alphabetical Order :");
 sortByName();
 printAddressBook();
+
+//sort entries by city
+function sortByCity(){
+    addressBookArray.sort((currentContact, nextContact) => (currentContact.city).localeCompare(nextContact.city));
+    console.log(addressBookArray);
+}
+console.log("Displaying Address Book entries in alphabetical Order City-wise :");
+sortByCity();
+printAddressBook();
+
+//sort entries by state
+function sortByState(){
+    addressBookArray.sort((currentContact, nextContact) => (currentContact.state).localeCompare(nextContact.state));
+    console.log(addressBookArray);
+}
+console.log("Displaying Address Book entries in alphabetical Order State-wise :");
+sortByState();
+printAddressBook();
+
+//sort entries by zip
+function sortByZip(){
+    addressBookArray.sort((currentContact, nextContact) => (currentContact.zip).localeCompare(nextContact.zip));
+    console.log(addressBookArray);
+}
+console.log("Displaying Address Book entries in alphabetical Order Zip-wise :");
+sortByZip();
+printAddressBook();
