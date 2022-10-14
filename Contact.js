@@ -106,7 +106,9 @@ let addressBookArray = new Array();
 
 try{
     addressBookArray.push(new Contact("Priya", "Pai", "Porbandar", "Indiana", 637889, 9378921781, "priyap@gmail.com"));
-   // console.log(contact.toString());
+    addressBookArray.push(new Contact("Arjun", "Roy", "Agra", "Delhi", 847893, 8812342212, "royzrocks@gmail.com"));
+    addressBookArray.push(new Contact("Abhishek", "Yadav", "Agra", "Delhi", 367289, 9499987098, "abhishek@gmail.com"));
+    addressBookArray.push(new Contact("Zeynep", "Castel", "Manchester", "Indiana", 356265, 4448739849, "manchesterfanp@gmail.com"));
 }
 catch(e){
     console.log(e);
@@ -114,7 +116,6 @@ catch(e){
 
 try{
     addressBookArray.push(new Contact("Mahi", "Walli", "Mecca", "Miriam", 893478, 7782967365, "mm16hmp@gmail.com"));
-   // console.log(contact.toString());
 }
 catch(e){
     console.log(e);
@@ -198,3 +199,18 @@ function searchByState(state) {
 }
 console.log("\nSearch Contact By State");
 console.log(searchByState("Indiana"));
+
+
+//view contacts by city
+function viewByCity(city){
+    return addressBookArray.filter((contact) => contact.city == city);
+}
+console.log("\nDislaying Contacts By City : Agra \n" );
+console.log(viewByCity('Agra'));
+
+//view contacts by state
+function viewByState(state){
+    return addressBookArray.filter((contact) => contact.state == state);
+}
+console.log("\nDisplaying Contacts By State : Indiana \n" );
+console.log(viewByState('Indiana'));
