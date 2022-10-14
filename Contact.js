@@ -41,7 +41,7 @@ class Contact{
     }
 
     set firstName(firstName){
-        const nameRegex = "^[A-Z][a-zA-Z]{2,}$";
+        const nameRegex = RegExp("^[A-Z][a-zA-Z]{2,}$");
         if (nameRegex.test(firstName))
             this._firstName = firstName;
         else 
@@ -49,7 +49,7 @@ class Contact{
     }
 
     set lastName(lastName){
-        const nameRegex = "^[A-Z][a-zA-Z]{2,}$";
+        const nameRegex = RegExp("^[A-Z][a-zA-Z]{2,}$");
         if (nameRegex.test(lastName))
             this._lastName = lastName;
         else 
@@ -59,7 +59,7 @@ class Contact{
     set city(city){
         const cityStateRegex = RegExp('^[a-zA-z]{3,}$');
         if (cityStateRegex.test(city))
-        this._city = city;
+            this._city = city;
         else
             throw "City input is Invalid!";   
     }
@@ -73,7 +73,7 @@ class Contact{
     }
 
     set zip(zip){
-        const zipRegex = RegExp("^[0-9]{3}\\s{0,1}[0-9]{3}$");
+        const zipRegex = RegExp("^[0-9]{3}[0-9]{3}$");
         if (zipRegex.test(zip))
         this._zip = zip;
         else
@@ -81,14 +81,15 @@ class Contact{
     }
 
     set phoneNumber(phoneNumber){
-        const phoneNumberRegex = RegExp("^[0-9]{2}\\s{1}[0-9]{10}$");
+        const phoneNumberRegex = RegExp("^[0-9]{10}$");
         if (phoneNumberRegex.test(phoneNumber))
-        this._phoneNumber = phoneNumber;
+            this._phoneNumber = phoneNumber;
         else
-            throw "Phone number input is Invalid!";    }
+            throw "Phone number input is Invalid!";    
+    }
 
     set email(email){
-        const emailRegex = "^[0-9a-zA-Z]+([_+-.a-z0-9A-Z]+)*[@][a-zA-Z]+[.][a-z]{2,4}([.][a-z]{2})?$";
+        const emailRegex = RegExp("^[0-9a-zA-Z]+([_+-.a-z0-9A-Z]+)*[@][a-zA-Z]+[.][a-z]{2,4}([.][a-z]{2})?$");
         if (emailRegex.test(email))
             this._email = email;
         else
@@ -100,13 +101,65 @@ class Contact{
     }
 }
 
+//new address book
 let addressBookArray = new Array();
 
 try{
-    addressBookArray.push(new Contact("Priya", "Pai", "Porbandar", "Indiana", 63788, 937892178, "priyap@gmail.com"));
-    addressBookArray.push(new Contact("Mahi", "walli", "Mecca", "Miriam", 893478, 7782967365, "mm16hmp@gmail.com"));
-    console.log(contact.toString());
+    addressBookArray.push(new Contact("Priya", "Pai", "Porbandar", "Indiana", 637889, 9378921781, "priyap@gmail.com"));
+   // console.log(contact.toString());
 }
 catch(e){
     console.log(e);
 }
+
+try{
+    addressBookArray.push(new Contact("Mahi", "Walli", "Mecca", "Miriam", 893478, 7782967365, "mm16hmp@gmail.com"));
+   // console.log(contact.toString());
+}
+catch(e){
+    console.log(e);
+}
+
+//find contact
+function contactExists(name) {
+    return addressBookArray.some(contact => contact.firstName == name);
+}
+
+function printAddressBook(){
+    addressBookArray.forEach(contact => console.log(contact.toString));
+}
+
+//edit contact
+function editContact(name, property, newValue) {
+    if (contactExists(name)) {
+        switch (property) {
+            case "city":
+                addressBookArray.find((contact) => contact.firstName == name).city = newValue;
+                break;
+            case "state":
+                addressBookArray.find((contact) => contact.firstName == name).state = newValue;
+                break;
+            case "zip":
+                addressBookArray.find((contact) => contact.firstName == name).zip = newValue;
+                break;
+            case "phoneNumber":
+                addressBookArray.find((contact) => contact.firstName == name).phoneNumber = newValue;
+                break;
+            case "email":
+                addressBookArray.find((contact) => contact.firstName == name).email = newValue;
+                break;
+            default:
+                console.log("Enter a valid field to edit");
+        }
+    }
+    else {
+        console.log("Contact Does Not Exist");
+    }
+}
+
+console.log("Address Book : ");
+printAddressBook();
+
+console.log("\nAddress Book after editing Contact :");
+editContact("Priya", "city", "Boston");
+printAddressBook();
