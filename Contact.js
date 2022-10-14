@@ -179,9 +179,22 @@ deleteContact("Priya");
 printAddressBook();
 
 //get count
-//console.log("Number of Contacts in Address Book : " + addressBookArray.length);
 function getCount(count) {
     return count+1;
 }
 
 console.log("Number of Contacts in Address Book : " + addressBookArray.reduce(count => getCount(count), 0));
+
+//search by city
+function searchByCity(city) {
+    return addressBookArray.filter((contact) => contact.city == city);
+}
+console.log("\nSearch Contact By City");
+console.log(searchByCity("Mecca"));
+
+//search by state
+function searchByState(state) {
+    return addressBookArray.filter((contact) => contact.state == state);
+}
+console.log("\nSearch Contact By State");
+console.log(searchByState("Indiana"));
