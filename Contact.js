@@ -163,3 +163,17 @@ printAddressBook();
 console.log("\nAddress Book after editing Contact :");
 editContact("Priya", "city", "Boston");
 printAddressBook();
+
+
+// delete contact
+function deleteContact(name){
+    if(contactExists(name)){
+        addressBookArray = addressBookArray.filter((contact) => contact.firstName != name);
+    }else{
+        console.log("Contact Does Not Exist");
+    }
+}
+
+console.log("\nAddress Book after deleting Contact :");
+deleteContact("Priya");
+printAddressBook();
